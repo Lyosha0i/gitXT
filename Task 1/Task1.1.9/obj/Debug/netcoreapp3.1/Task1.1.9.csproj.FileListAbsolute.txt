@@ -1,0 +1,13 @@
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\bin\Debug\netcoreapp3.1\Task1.1.9.exe
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\bin\Debug\netcoreapp3.1\Task1.1.9.deps.json
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\bin\Debug\netcoreapp3.1\Task1.1.9.runtimeconfig.json
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\bin\Debug\netcoreapp3.1\Task1.1.9.runtimeconfig.dev.json
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\bin\Debug\netcoreapp3.1\Task1.1.9.dll
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\bin\Debug\netcoreapp3.1\Task1.1.9.pdb
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\obj\Debug\netcoreapp3.1\Task1.1.9.GeneratedMSBuildEditorConfig.editorconfig
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\obj\Debug\netcoreapp3.1\Task1.1.9.AssemblyInfoInputs.cache
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\obj\Debug\netcoreapp3.1\Task1.1.9.AssemblyInfo.cs
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\obj\Debug\netcoreapp3.1\Task1.1.9.csproj.CoreCompileInputs.cache
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\obj\Debug\netcoreapp3.1\Task1.1.9.dll
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\obj\Debug\netcoreapp3.1\Task1.1.9.pdb
+G:\Cloud@Mail.Ru\Исходные коды\XT\Task1.1.9\obj\Debug\netcoreapp3.1\Task1.1.9.genruntimeconfig.cache
