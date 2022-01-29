@@ -6,8 +6,8 @@ namespace Task2._1._2
 {
     class Square:Figure
     {
-        private int x1, x2, y1, y2;
-        private Line a1,a2,b1,b2;
+        protected int x1, x2, y1, y2;
+        protected Line a1,a2,b1,b2;
         public int X1
         {
             get { return x1; }
@@ -40,9 +40,9 @@ namespace Task2._1._2
             Line b2 = new Line(x2, y1, x2, y2);
         }
         public override double Perimeter
-        { get {return a1.Perimeter+a2.Perimeter+b1.Perimeter+b2.Perimeter;} }
+        { get {return a1.Perimeter*4;} }
         public override double Area
-        { get { return a1.Perimeter*b1.Perimeter; } }
+        { get { return a1.Perimeter*a1.Perimeter; } }
         public override string ToString()
         {
             return base.ToString().Remove(0,12)+": (" + x1 + ";" + y1 + "), (" + x2 + ";" + y1 + ")"+", (" + x1 + ";" + y2 + "), (" + x2 + ";" + y2 + ")";
