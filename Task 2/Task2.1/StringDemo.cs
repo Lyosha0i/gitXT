@@ -73,7 +73,8 @@ namespace Task2._1
             }
             return -1;
         }
-        public static char[] StrDToCharArr(StringDemo s){
+        public static char[] StrDToCharArr(StringDemo s)
+        {
             return s.c;
         }
         public StringDemo Replace(char c1,char c2) {
