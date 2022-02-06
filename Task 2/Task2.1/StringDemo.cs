@@ -16,8 +16,17 @@ namespace Task2._1
         }
         public static bool Compare(StringDemo a, StringDemo b)
         {
-            if (a.c.Length != b.c.Length) return false;
-            for (int i = 0; i < a.c.Length; i++)if (a.c[i] != b.c[i]) return false;
+            if (a == null || b == null || a.c.Length != b.c.Length)
+            {
+                return false;
+            }
+            for (int i = 0; i < a.c.Length; i++)
+            {
+                if (a.c[i] != b.c[i])
+                {   
+                    return false;
+                }
+            }
             return true;
         }
         public static StringDemo Concat(params StringDemo[] arr)
