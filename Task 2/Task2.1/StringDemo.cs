@@ -32,7 +32,10 @@ namespace Task2._1
         public static StringDemo Concat(params StringDemo[] arr)
         {
             int n=0;
-            foreach (var i in arr)n+=i.c.Length;
+            foreach (var i in arr)
+            {
+                n += i.c.Length;
+            }
             char[] c = new char[n];
             StringDemo a = new StringDemo(c);
             int j=0;
