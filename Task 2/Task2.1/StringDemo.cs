@@ -16,18 +16,38 @@ namespace Task2._1
         }
         public static bool Compare(StringDemo a, StringDemo b)
         {
+
             if (a.charArray.Length != b.charArray.Length)
                 return false;
             for (int i = 0; i < a.charArray.Length; i++)
                 if (a.charArray[i] != b.charArray[i])
                     return false;
+
+            if (a == null || b == null || a.c.Length != b.c.Length)
+            {
+                return false;
+            }
+            for (int i = 0; i < a.c.Length; i++)
+            {
+                if (a.c[i] != b.c[i])
+                {   
+                    return false;
+                }
+            }
+
             return true;
         }
         public static StringDemo Concat(params StringDemo[] arr)
         {
             int n=0;
             foreach (var i in arr)
+
                 n+=i.charArray.Length;
+
+            {
+                n += i.c.Length;
+            }
+
             char[] c = new char[n];
             StringDemo a = new StringDemo(c);
             int j=0;
@@ -48,8 +68,15 @@ namespace Task2._1
         {
             for (int i = 0; i < s.charArray.Length; i++)
             {
+
                 if (s.charArray[i] == cc)
                     return i + 1;
+
+                if (s.c[i] == cc) 
+                {
+                    return i + 1;
+                }
+
             }
             return -1;
         }
@@ -57,6 +84,7 @@ namespace Task2._1
         {
             for (int i = start-1; i < s.charArray.Length; i++)
             {
+
                 if (s.charArray[i] == cc)
                     return i + 1;
             }
@@ -64,6 +92,18 @@ namespace Task2._1
         }
         public static char[] StrDToCharArr(StringDemo s){
             return s.charArray;
+
+                if (s.c[i] == cc) 
+                {
+                    return i + 1;
+                }
+            }
+            return -1;
+        }
+        public static char[] StrDToCharArr(StringDemo s)
+        {
+            return s.c;
+
         }
         public StringDemo Replace(char c1,char c2) {
             for (int i = 0; i < this.charArray.Length; i++)
