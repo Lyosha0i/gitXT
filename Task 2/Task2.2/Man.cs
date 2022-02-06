@@ -4,51 +4,55 @@ using System.Text;
 
 namespace Task2._2
 {
-    static class Man
+    class Man:GameObject
     {
-        private static char left = 'M', right = 'm';
-        public static bool IsLeft = false, IsProtected = false;
-        private static byte x = 0, y = 28;
-        public static char Left
+        private char left = 'M', right = 'm';
+        public bool IsLeft = false, IsProtected = false;
+        private byte x = 0, y = 28;
+        public Man(Point point) : base(point)
+        {
+
+        }
+        public  char Left
         {
             get
             {
                 return left;
             }
         }
-        public static char Right
+        public  char Right
         {
             get
             {
                 return right;
             }
         }
-        public static byte X
-        {
-            get
-            {
-                return x;
-            }
-            set
-            {
-                if (x >= 0 && x <= 39)
-                    x = value;
-            }
-        }
-        public static byte Y
-        {
-            get
-            {
-                return y;
-            }
-            set
-            {
-                if (y >= 0 && y <= 28)
-                    y = value;
-            }
-        }
-        private static byte lives = 3;
-        public static byte Lives
+        //public  byte X
+        //{
+        //    get
+        //    {
+        //        return x;
+        //    }
+        //    set
+        //    {
+        //        if (x >= 0 && x <= 39)
+        //            x = value;
+        //    }
+        //}
+        //public  byte Y
+        //{
+        //    get
+        //    {
+        //        return y;
+        //    }
+        //    set
+        //    {
+        //        if (y >= 0 && y <= 28)
+        //            y = value;
+        //    }
+        //}
+        private  byte lives = 3;
+        public  byte Lives
         {
             get
             {

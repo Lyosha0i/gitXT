@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task2._2
 {
-    class Shield
+    class Shield:GameObject
     {
         private char c = 'D';
         public bool IsCollected = false,IsDamaged=false;
@@ -16,29 +16,33 @@ namespace Task2._2
                 return c;
             }
         }
+        public Shield(Point point) : base(point)
+        {
+
+        }
         //public char C { get; }
-        public int X
-        {
-            get
-            {
-                return x;
-            }
-            set
-            {
-                    x = value;
-            }
-        }
-        public int Y
-        {
-            get
-            {
-                return y;
-            }
-            set
-            {
-                if (y==14)
-                    y = value;
-            }
-        }
+        //public int X
+        //{
+        //    get
+        //    {
+        //        return x;
+        //    }
+        //    set
+        //    {
+        //            x = value;
+        //    }
+        //}
+        //public int Y
+        //{
+        //    get
+        //    {
+        //        return y;
+        //    }
+        //    set
+        //    {
+        //        if (y==14)
+        //            y = value;
+        //    }
+        //}
     }
 }

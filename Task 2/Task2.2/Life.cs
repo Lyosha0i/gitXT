@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task2._2
 {
-    class Life
+    class Life:GameObject
     {
         private char c ='L';
         public bool IsCollected = false;
@@ -16,30 +16,34 @@ namespace Task2._2
                 return c;
             }
         }
+        public Life(Point point) : base(point)
+        {
+
+        }
         //public char C { get; }
-        public int X
-        {
-            get
-            {
-                return x;
-            }
-            set
-            {
-                if (x >= 0 && x <= 39)
-                    x = value;
-            }
-        }
-        public int Y
-        {
-            get
-            {
-                return y;
-            }
-            set
-            {
-                if (y >= 0 && y <= 28)
-                    y = value;
-            }
-        }
+        //public int X
+        //{
+        //    get
+        //    {
+        //        return x;
+        //    }
+        //    set
+        //    {
+        //        if (x >= 0 && x <= 39)
+        //            x = value;
+        //    }
+        //}
+        //public int Y
+        //{
+        //    get
+        //    {
+        //        return y;
+        //    }
+        //    set
+        //    {
+        //        if (y >= 0 && y <= 28)
+        //            y = value;
+        //    }
+        //}
     }
 }

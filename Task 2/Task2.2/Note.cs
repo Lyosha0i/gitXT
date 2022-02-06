@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task2._2
 {
-    class Note
+    class Note:GameObject
     {
         private char c = '♫';
         public bool IsCollected = false;
@@ -18,29 +18,33 @@ namespace Task2._2
                 return c;
             }
         }
-        public int X
+        //public int X
+        //{
+        //    get
+        //    {
+        //        return x;
+        //    }
+        //    set
+        //    {
+        //        if (x >= 16 && x <= 35)
+        //            x = value;
+        //    }
+        //}
+        //public int Y
+        //{
+        //    get
+        //    {
+        //        return y;
+        //    }
+        //    set
+        //    {
+        //        if (y >= 0 && y <= 28)
+        //            y = value;
+        //    }
+        //}
+        public Note(Point point) : base(point)
         {
-            get
-            {
-                return x;
-            }
-            set
-            {
-                if (x >= 16 && x <= 35)
-                    x = value;
-            }
-        }
-        public int Y
-        {
-            get
-            {
-                return y;
-            }
-            set
-            {
-                if (y >= 0 && y <= 28)
-                    y = value;
-            }
+
         }
     }
 }
