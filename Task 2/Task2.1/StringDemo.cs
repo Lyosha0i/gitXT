@@ -55,7 +55,10 @@ namespace Task2._1
         {
             for (int i = 0; i < s.c.Length; i++)
             {
-                if (s.c[i] == cc) return i + 1;
+                if (s.c[i] == cc) 
+                {
+                    return i + 1;
+                }
             }
             return -1;
         }
