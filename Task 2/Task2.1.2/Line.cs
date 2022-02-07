@@ -6,7 +6,9 @@ namespace Task2._1._2
 {
     class Line:Figure
     {
-        private int x1, x2, y1, y2;
+        private Point startPoint;
+        private Point endPoint;
+
         public int X1
         {
             get { return x1; }
