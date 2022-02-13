@@ -12,6 +12,7 @@ namespace Task3._2
         private int capacity = 8;
         private int length = 0;
         private T[] data;
+        
         public DynamicArray()
         {
             Array.Resize(ref data, Capacity);
