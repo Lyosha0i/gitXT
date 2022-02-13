@@ -22,7 +22,7 @@ namespace Task3._2
             get { return data[index]; }
             set { data[index] = value; }
         }
-        public int Count
+        public int Length
         {
             get
             {
@@ -37,19 +37,8 @@ namespace Task3._2
             }
             set
             {
-                if (capacity >= 0)
+                if (capacity >= Length)
                     capacity = value;
-            }
-        }
-        public int Length
-        {
-            get
-            {
-                return length;
-            }
-            set
-            {
-                length = value;
             }
         }
         public void Resize(ref T[] data)
