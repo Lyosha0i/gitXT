@@ -12,21 +12,33 @@ namespace Task3._2
         private int capacity = 8;
         private int length = 0;
         private T[] data;
-        
         public DynamicArray()
         {
             Array.Resize(ref data, Capacity);
         }
-        public T this[int index]
+        public DynamicArray(int capacity)
         {
-            get { return data[index]; }
-            set { data[index] = value; }
+            Array.Resize(ref data, capacity);
+        }
+        public DynamicArray(List<T>collection)
+        {
+            Array.Resize(ref data, collection.Count);
+            for (int i = 0; i < collection.Count; i++)
+                data[i] = collection[i];
+            }
+        
+        public int Count
+        {
+            get
+            {
+                return data.Length;
+            }
         }
         public int Length
         {
             get
             {
-                return data.Length;
+                return length;
             }
         }
         public int Capacity
@@ -39,6 +51,23 @@ namespace Task3._2
             {
                 if (capacity >= Length)
                     capacity = value;
+            }
+        }
+        public T this[int index]
+        {
+            get
+            {
+                if (index <= Length)
+                    return data[index];
+                else
+                    throw new ArgumentOutOfRangeException();
+            }
+            set
+            {
+                if (index <= Length)
+                    data[index] = value;
+                else
+                    throw new ArgumentOutOfRangeException();
             }
         }
         public void Resize(ref T[] data)
@@ -61,7 +90,7 @@ namespace Task3._2
             public bool MoveNext()
             {
                 //Avoids going beyond the end of the collection.
-                if (++curIndex >= _da.Count)
+                if (++curIndex >= _da.Length)
                 {
                     return false;
                 }
@@ -94,7 +123,7 @@ namespace Task3._2
                 Capacity *= 2;
             }
             index++;
-            Length++;
+            length++;
         }
         public void Add(T i)
         {
@@ -104,7 +133,7 @@ namespace Task3._2
         public void AddRange(List<T> coll)
         {
             int i = 0;
-            for (i = 0; this.Length + coll.Count > Capacity; i++)
+            for (i = 0; this.length + coll.Count > Capacity; i++)
                 Capacity *= 2;
             if (i > 0)
                 Array.Resize(ref data, Capacity);
@@ -122,7 +151,7 @@ namespace Task3._2
         {
             for (int j = pos; j < index; j++)
                 data[j] = data[j + 1];
-            Length--;
+            length--;
             data[index] = default(T);
             index--;
         }

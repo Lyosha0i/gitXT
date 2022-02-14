@@ -21,6 +21,7 @@ namespace Task3._2
             da.AddRange(test3);
             da.Insert(32,32);
             foreach (var i in da) Console.WriteLine(i);
+            DynamicArray<byte> da2 = da;
         }
     }
 }
