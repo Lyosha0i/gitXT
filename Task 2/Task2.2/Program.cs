@@ -33,6 +33,22 @@ namespace Task2._2
                 man.point.Y = 28;
             }
 		}
+        private static void InitArrays(ref Obstacle[]obstacles,ref Bear[]bears,ref Life[]lives,ref Shield[]shields,ref Note[]notes)
+        {
+            Obstacles(ref obstacles);
+            Bears(ref bears, obstacles);
+            Lives(ref lives, obstacles);
+            Shields(ref shields);
+            Notes(ref notes, obstacles);
+        }
+        private static void ArraysController(ref Bear[]bears,ref int killed,ref Man man,Obstacle[]obstacles, ConsoleKeyInfo input,ref Life[]lives,ref Shield[]shields,ref Note[]notes,ref int notesPP)
+        {
+            manUpdate(ref bears, ref killed, ref man, obstacles, input);
+            BearsUpdate(ref bears, ref man, obstacles);
+            LivesUpdate(ref lives, ref man);
+            ShieldsUpdate(ref shields, ref man, bears);
+            NotesUpdate(ref notes, ref man, ref notesPP);
+        }
         private static void Obstacles(ref Obstacle[] obstacles)
         {
             for (byte i = 0; i < obstacles.Length; i+=2)
@@ -245,7 +261,35 @@ namespace Task2._2
                 }
             }
         }    
-
+        private static void MainLoop(ref Obstacle[]obstacles, ref Bear[]bears,ref Life[]lives,ref Shield[]shields,
+            ref Note[]notes,ref Man man, ref int killed, ConsoleKeyInfo input,ref int notesPP,ref DateTime now)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                for (int j = 0; j < 30; j++)
+                    if (j % 2 == 1)
+                    {
+                        if (GameStrings.game[j] == null) GameStrings.game[j] = new StringBuilder("ПППППППППППППППППППППППППППППППППППППППП");
+                        if (GameStrings.game[j] != null) Console.WriteLine(GameStrings.game[j]);
+                    }
+                    else
+                    {
+                        if (GameStrings.game[j] == null) GameStrings.game[j] = new StringBuilder("                                        ");
+                        if (GameStrings.game[j] != null) Console.WriteLine(GameStrings.game[j]);
+                    }
+                if (i == 0)
+                {
+                    InitArrays(ref obstacles, ref bears, ref lives, ref shields, ref notes);
+                    GameStrings.game[28][0] = man.Right;
+                }
+                ArraysController(ref bears, ref killed, ref man, obstacles, input, ref lives, ref shields, ref notes, ref notesPP);
+                Console.WriteLine(now + DateTime.Now.Millisecond.ToString());
+                if (now < DateTime.Now) Console.WriteLine(DateTime.Now - now);
+                Console.WriteLine("L {0} ♫ {1} B {2}", man.Lives, notesPP, killed);
+                for (double j = 0; j < 1000; j += 0.00001) ;//The crutch instead of the timer.
+                Console.Clear();
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -261,39 +305,32 @@ namespace Task2._2
             Life[] lives= new Life[6];
 			Shield[] shields= new Shield[3];
             Note[] notes = new Note[45];//Notes to collect.
-            for (int i = 0; i < 30; i++)
-            {
-                for (int j = 0; j < 30; j++)
-                        if (j % 2 == 1)
-                        {
-                            if(GameStrings.game[j]==null)GameStrings.game[j] = new StringBuilder("ПППППППППППППППППППППППППППППППППППППППП");
-                            if (GameStrings.game[j] != null) Console.WriteLine(GameStrings.game[j]);
-                        }
-                    else
-                    {
-                            if (GameStrings.game[j] == null) GameStrings.game[j] = new StringBuilder("                                        ");
-                        if (GameStrings.game[j] != null) Console.WriteLine(GameStrings.game[j]);
-                        }
-                if (i == 0)
-                {
-                    Obstacles(ref obstacles);
-                    Bears(ref bears,obstacles);
-                    Lives(ref lives,obstacles);
-                    Shields(ref shields);
-                    Notes(ref notes,obstacles);
-					GameStrings.game[28][0]=man.Right;
-                }
-				manUpdate(ref bears,ref killed,ref man,obstacles,input);
-				BearsUpdate(ref bears,ref man,obstacles);
-				LivesUpdate(ref lives,ref man);
-				ShieldsUpdate(ref shields,ref man,bears);
-				NotesUpdate(ref notes,ref man,ref notesPP);
-                Console.WriteLine(now+DateTime.Now.Millisecond.ToString());
-                if (now<DateTime.Now) Console.WriteLine(DateTime.Now-now);
-                Console.WriteLine("L {0} ♫ {1} B {2}",man.Lives,notesPP,killed);
-                for (double j = 0; j < 1000; j += 0.00001);//The crutch instead of the timer.
-                Console.Clear();
-            }
+            MainLoop(ref obstacles,ref bears,ref lives,ref shields,ref notes,ref man,ref killed,input,ref notesPP,ref now);
+            //for (int i = 0; i < 30; i++)
+            //{
+            //    for (int j = 0; j < 30; j++)
+            //            if (j % 2 == 1)
+            //            {
+            //                if(GameStrings.game[j]==null)GameStrings.game[j] = new StringBuilder("ПППППППППППППППППППППППППППППППППППППППП");
+            //                if (GameStrings.game[j] != null) Console.WriteLine(GameStrings.game[j]);
+            //            }
+            //        else
+            //        {
+            //                if (GameStrings.game[j] == null) GameStrings.game[j] = new StringBuilder("                                        ");
+            //            if (GameStrings.game[j] != null) Console.WriteLine(GameStrings.game[j]);
+            //            }
+            //    if (i == 0)
+            //    {
+            //        InitArrays(ref obstacles,ref bears,ref lives,ref shields,ref notes);
+            //        GameStrings.game[28][0] = man.Right;
+            //    }
+            //    ArraysController(ref bears,ref killed,ref man,obstacles,input,ref lives,ref shields,ref notes,ref notesPP);
+            //    Console.WriteLine(now+DateTime.Now.Millisecond.ToString());
+            //    if (now<DateTime.Now) Console.WriteLine(DateTime.Now-now);
+            //    Console.WriteLine("L {0} ♫ {1} B {2}",man.Lives,notesPP,killed);
+            //    for (double j = 0; j < 1000; j += 0.00001);//The crutch instead of the timer.
+            //    Console.Clear();
+            //}
         }
     }
 }
