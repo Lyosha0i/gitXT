@@ -6,7 +6,7 @@ namespace Task2._1._2
 {
     class Disk:Circle
     {
-        public Disk(int x, int y, int r):base(x,y,r)
+        public Disk(Point center, int r):base(center,r)
         {
             //this.x = x;
             //this.y = y;

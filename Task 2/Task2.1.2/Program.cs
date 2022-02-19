@@ -8,7 +8,10 @@ namespace Task2._1._2
     {
         static void Main(string[] args)
         {
-            //Eloquent.All();
+            //Rectangle r = new Rectangle(1, 1, 1, 1);
+            //Square rr = new Square(1, 1, 1, 1);
+            //rr = r;
+            //Console.WriteLine(rr.ToString());
             Console.WriteLine();
             Figure[] figures = new Figure[400];
             Console.WriteLine("Choose the action:\n1. Add a figure\n2. Output figures\n3. Clear the canvas\n4. Exit");
@@ -26,14 +29,14 @@ namespace Task2._1._2
                         {
                             case 1:
                                 Console.WriteLine("Enter settings of figure Line");
-                                Console.WriteLine("Enter the first dot");
+                                Console.WriteLine("Enter the first point");
                                 int x1L, y1L, x2L, y2L;
                                     int.TryParse(Console.ReadLine(),out x1L);
                                 int.TryParse(Console.ReadLine(), out y1L);
-                                Console.WriteLine("Enter the second dot");
+                                Console.WriteLine("Enter the second point");
                                 int.TryParse(Console.ReadLine(), out x2L);
                                 int.TryParse(Console.ReadLine(), out y2L);
-                                Line line = new Line(x1L,y1L,x2L,y2L);
+                                Line line = new Line(new Point(x1L,y1L), new Point(x2L, y2L));
                                 figures[c] = line;
                                 c++;
                                 Console.WriteLine("Figure Line has been created!");
@@ -46,7 +49,7 @@ namespace Task2._1._2
                                 int.TryParse(Console.ReadLine(), out yC);
                                 Console.WriteLine("Enter the radius");
                                 int.TryParse(Console.ReadLine(), out rC);
-                                Circle circle = new Circle(xC, yC, rC);
+                                Circle circle = new Circle(new Point(xC,yC), rC);
                                 figures[c] = circle;
                                 c++;
                                 Console.WriteLine("Figure Circle has been created!");
@@ -61,38 +64,38 @@ namespace Task2._1._2
                                 int.TryParse(Console.ReadLine(), out r1);
                                 Console.WriteLine("Enter the inner radius");
                                 int.TryParse(Console.ReadLine(), out r2);
-                                Ring ring = new Ring(xR,yR,r1,r2);
+                                Ring ring = new Ring(new Point(xR,yR),r1,r2);
                                 figures[c] = ring;
                                 c++;
                                 Console.WriteLine("Figure Ring has been created!");
                                 break;
                                 case 4:
                                 		Console.WriteLine("Enter settings of figure Square");
-                                Console.WriteLine("Enter the first dot");
+                                Console.WriteLine("Enter the first point");
                                 int x1S, y1S, x2S, y2S;
                                 int.TryParse(Console.ReadLine(), out x1S);
                                 int.TryParse(Console.ReadLine(), out y1S);
-                                Console.WriteLine("Enter the second dot");
+                                Console.WriteLine("Enter the second point");
                                 int.TryParse(Console.ReadLine(), out x2S);
                                 int.TryParse(Console.ReadLine(), out y2S);
-                                Square square = new Square(x1S,y1S,x2S,y2S);
+                                Square square = new Square(new Point(x1S,y1S), new Point(x2S, y2S));
                                 figures[c] = square;
                                 c++;
                                 Console.WriteLine("Figure Square has been created!");
                                 break;
                                 case 5:
                                 		Console.WriteLine("Enter settings of figure Triangle");
-                                Console.WriteLine("Enter the first dot");
+                                Console.WriteLine("Enter the first point");
                                 int x1T,y1T,x2T,y2T,x3T,y3T;
                                 int.TryParse(Console.ReadLine(), out x1T);
                                 int.TryParse(Console.ReadLine(), out y1T);
-                                Console.WriteLine("Enter the second dot");
+                                Console.WriteLine("Enter the second point");
                                 int.TryParse(Console.ReadLine(), out x2T);
                                 int.TryParse(Console.ReadLine(), out y2T);
-                                Console.WriteLine("Enter the third dot");
+                                Console.WriteLine("Enter the third point");
                                 int.TryParse(Console.ReadLine(), out x3T);
                                 int.TryParse(Console.ReadLine(), out y3T);
-                                Triangle triangle = new Triangle(x1T,y1T,x2T,y2T,x3T,y3T);
+                                Triangle triangle = new Triangle(new Point(x1T, y1T), new Point(x2T, y2T), new Point(x3T, y3T));
                                 figures[c] = triangle;
                                 c++;
                                 Console.WriteLine("Figure Triangle has been created!");

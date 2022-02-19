@@ -6,26 +6,30 @@ namespace Task2._1._2
 {
     class Circle:Figure
     {
-        protected int x, y,r;
-        //protected int r;
-        public int X {
-            get{return x;}
-            set{ if (x >= 0) x =value;}
-        }
-        public int Y
+        protected int r=1;
+        protected Point center;
+        public Point Center
         {
-            get { return y; }
-            set { if (y >= 0) y = value; }
+            get { return center; }
+            set { if (value.X >= 0 && value.Y >= 0) center = value; }
         }
+        //public int X {
+        //    get{return x;}
+        //    set{ if (x >= 0) x =value;}
+        //}
+        //public int Y
+        //{
+        //    get { return y; }
+        //    set { if (y >= 0) y = value; }
+        //}
         public int Radius
         {
             get { return r; }
-            set { if (r >= 0) r = value; }
+            set { if (value >= 0) r = value; }
         }
-        public Circle(int x, int y, int r)
+        public Circle(Point center,int r)
         {
-            this.x = x;
-            this.y = y;
+            this.center = center;
             this.r = r;
         }
         override public double Perimeter
@@ -38,7 +42,7 @@ namespace Task2._1._2
         }
         public override string ToString()
         {
-            return base.ToString().Remove(0,12)+": (" + x + ";" + y + "), radius=" + r;
+            return base.ToString().Remove(0,12)+": (" + center.X + ";" + center.Y + "), radius=" + r;
         }
     }
 }
