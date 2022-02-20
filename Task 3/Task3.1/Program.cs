@@ -16,7 +16,7 @@ namespace Task_3._1
             for (int i = 0; i < n; i++)
                 people.AddLast(true);
             Console.WriteLine("A circle of people has been generated.");
-            LinkedListNode<bool> node = people.First;
+            LinkedListNode<bool> node = people.First,temp;
             while (j < n-1&&n-round+1>=every)
             {
                 //round++;
@@ -26,11 +26,14 @@ namespace Task_3._1
                         counter++;//Every existing person.
                     if (counter % every == 0&& node.Value)
                     {
-                        node.Value = false;//Cross selected person out, and he won't exist.
+                        temp = node.Next;//Cross selected person out, and he won't exist.
+                        people.Remove(node);
+                        node = temp;
+                        //node.Value = false;//Cross selected person out, and he won't exist.
                         j++;
                         Console.WriteLine("Round {0}. A person has been crossed out. Persons left: {1}",round,n-j);
                         round++;
-                        node = node.Next;
+                        //node = node.Next;
                     }
                     else if (node.Next != null)
                         node = node.Next;
