@@ -28,6 +28,8 @@ namespace Task3._3._3
             List<Order> orders = new List<Order>();//()!
             Random r= new Random();
             int time=1;
+            Pizzeria pizzeria = Pizzeria.Instance;
+            //pizzeria.OnNewOrder += pizzeria.NewOrder;
             //while(true)//for (int i = 0; true;)
             //{
                 for (int j = 0; j < 100; j++)//100 orders.
@@ -37,7 +39,8 @@ namespace Task3._3._3
                     orders.Add(new Order(r.Next(1,5)));//Random amount of pizzas.
                     orders[j].Number = j + 1;//This field is for the ParameterizedThreadStart with many parameters.
                 Thread.Sleep(time*1000);
-                    NewOrder(orders[j]);
+                pizzeria.NewOrder(orders[j]);
+                    //NewOrder(orders[j]);
                     for (int k = 0; k < j+1; k++)
                     {
                         if(j-k<=9)//Information about the last 10 orders.
