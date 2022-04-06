@@ -38,12 +38,12 @@
 
 .cloud {
     background: url("computer.png") no-repeat;
-    background-position: 0 -42px;
+    
 }
 
 .dedicated {
     background: url("database.png") no-repeat;
-    background-position: 0 -84px;
+    
 }
 
 h3 {
