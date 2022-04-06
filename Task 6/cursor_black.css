@@ -1,0 +1,39 @@
+﻿body {
+    background-color: #333;
+    padding: 50px;
+    font-family: serif;
+}
+
+.cursor {
+    padding: 10px;
+    text-align: center;
+    background-color: #88B7D5;
+    color: white;
+    border: 4px solid #C2E1F5;
+}
+
+fieldset legend {
+    content: "";
+    position: relative;
+    width: 56px;
+}
+
+    fieldset legend::before {
+        content: "";
+        position: absolute;
+        top: -66px;
+        left: -2px;
+        width: 0px;
+        border: 34px solid transparent;
+        border-bottom: 34px solid #C2E1F5;
+    }
+
+    fieldset legend::after {
+        content: "";
+        position: absolute;
+        top: -56px;
+        left: 2px;
+        width: 0px;
+        border: 30px solid transparent;
+        border-bottom: 30px solid #88B7D5;
+    }
