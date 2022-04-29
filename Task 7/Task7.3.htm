@@ -1,0 +1,16 @@
+﻿<script src="storage.js"></script>
+<script>
+    let storage = new Service();
+	let storage2 = new Service();
+    arr = [2, 4, 8];
+    storage.add(arr[2]);
+	storage.storage.set("16",16);
+	alert(storage.getById("16"));
+	storage2=storage.getAll();
+	storage.updateById();
+    //alert(storage.getAll());
+    //alert(storage);
+	//for (let entry of storage2.storage) { // то же самое, что и recipeMap.entries()
+  //alert(entry); // огурец,500 (и так далее)
+//}
+</script>

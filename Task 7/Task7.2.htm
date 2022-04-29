@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <script>
+        'use strict';
+        function MultiplyDivide(reg) {
+            if (reg.match(/\*/) != null)
+                return reg.match(/(\d+\.\d+)|(\d+)/g)[0] * reg.match(/(\d+\.\d+)|(\d+)/g)[1];
+            else return reg.match(/(\d+\.\d+)|(\d+)/g)[0] / reg.match(/(\d+\.\d+)|(\d+)/g)[1];
+        }
+        function SumDifference(reg) {
+            if (reg.match(/\+/) != null)
+                return parseFloat(reg.match(/(\d+\.\d+)|(\d+)/g)[0]) + parseFloat(reg.match(/(\d+\.\d+)|(\d+)/g)[1]);
+            else return (reg.match(/(\d+\.\d+)|(\d+)/g)[0]) - (reg.match(/(\d+\.\d+)|(\d+)/g)[1]);
+        }
+        let a = "248-0.2/4*8-248";
+        //let minus = 1;
+        //let a="-0.2+4-4+8";
+        while (a.match(/((\d+\.\d+)|(\d+))(\*|\/)((\d+\.\d+)|(\d+))/) != null) {
+            //if (a[0] == '-')
+            //{
+            //    minus *= -1;
+            //    a = a.substring(1, a.length);
+            //    alert(minus);
+            //    alert(a.substring(1, a.length));
+            //    alert(a);
+            //}
+            a = a.replace(/((\d+\.\d+)|(\d+))(\*|\/)((\d+\.\d+)|(\d+))/,
+                MultiplyDivide(a.match(/((\d+\.\d+)|(\d+))(\*|\/)((\d+\.\d+)|(\d+))/)[0]));
+        }
+        while (a.match(/((\d+\.\d+)|(\d+))(\+|\-)((\d+\.\d+)|(\d+))/) != null) {
+            //if (a[0] == '-') {
+            //    minus *= -1;
+            //    a = a.substring(1, a.length);
+            //    alert(minus * 2);
+            //    //alert(a.substring(1,a.length));
+            //    alert(a);
+            //}
+            a = a.replace(/((\d+\.\d+)|(\d+))(\+|\-)((\d+\.\d+)|(\d+))/,
+                SumDifference(a.match(/((\d+\.\d+)|(\d+))(\+|\-)((\d+\.\d+)|(\d+))/)[0]));
+        }
+        alert(parseFloat(a).toFixed(2));
+        //let name = prompt("Ваше имя?", "");
+    </script>
+
+</body>
+</html>
