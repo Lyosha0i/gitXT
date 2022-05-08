@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Task4.1": {
+      "commandName": "Project",
+      "commandLineArgs": "/o"
+    }
+  }
+}
