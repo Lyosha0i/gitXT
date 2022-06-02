@@ -6,52 +6,48 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Home Page";
 
-    IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
+    //IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
+    UsersAndAwardsLogic bll2 = DependencyResolver.Instance.UsersAndAwardsBll;
 }
 @if (!User.Identity.IsAuthenticated)
 {
-    Response.Redirect("~/Pages/SignIn/");
+    Response.Redirect("~/Pages/LogIn/");
 }
-<form method="post" class="add">
-    <div class="inline">
-        <p>Username</p>
-        <p />
-        <input name="Name">
-    </div>
-    <div class="inline">
-        <p>Date of birth</p>
-        <div class="inline">
-            <p>Day</p>
-            <p />
-            <input name="Day" type="datetime">
-        </div>
-        <div class="inline">
-            <p>Month</p>
-            <p />
-            <input name="Month" type="datetime">
-        </div>
-        <div class="inline">
-            <p>Year</p>
-            <p />
-            <input name="Year" type="datetime"><button name="User" value="true">Add</button>
-        </div>
-    </div>
-</form>
-@if (IsPost && Request.Form["User"] == "true")
+@if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
 {
-    if (User.IsInRole("admin"))
-    {
-        AddModel.Instance.Day = Request["Day"];
-        AddModel.Instance.Month = Request["Month"];
-        AddModel.Instance.Year = Request["Year"];
-        AddModel.Instance.Name = Request["Name"];
-        Response.Redirect("~/Pages/Add/");//
-        <p>@AddModel.Instance.user</p>
-    }
-    else
-    {
-        <p>Forbidden</p>
-    }
+    <form method="post" class="add">
+        <div class="inline">
+            <p>Username</p>
+            <p />
+            <input name="Name">
+        </div>
+        <div class="inline">
+            <p>Date of birth</p>
+            <div class="inline">
+                <p>Day</p>
+                <p />
+                <input name="Day" type="datetime">
+            </div>
+            <div class="inline">
+                <p>Month</p>
+                <p />
+                <input name="Month" type="datetime">
+            </div>
+            <div class="inline">
+                <p>Year</p>
+                <p />
+                <input name="Year" type="datetime"><button name="User" value="true">Add</button>
+            </div>
+        </div>
+    </form>
+if (IsPost && Request.Form["User"] == "true")
+{
+    AddModel.Instance.Day = Request["Day"];
+    AddModel.Instance.Month = Request["Month"];
+    AddModel.Instance.Year = Request["Year"];
+    AddModel.Instance.Name = Request["Name"];
+    Response.Redirect("~/Pages/Add/");//
+    <p>@AddModel.Instance.user</p>
 }
 <p></p>
 <form method="post" class="add">
@@ -61,9 +57,9 @@
         <input name="Title"><button name="Award" value="true">Add</button>
     </div>
 </form>
-@if (IsPost && Request.Form["Award"] == "true")
+if (IsPost && Request.Form["Award"] == "true")
 {
-    bll.AddAward(Request["Title"]);
+    bll2.AddAward(Request["Title"]);
 }
 <p></p>
 <form method="post">
@@ -73,9 +69,9 @@
         <input name="User_Id"><button name="Delete_User" value="true">Delete</button>
     </div>
 </form>
-@if (IsPost && Request.Form["Delete_User"] == "true")
+if (IsPost && Request.Form["Delete_User"] == "true")
 {
-    bll.RemoveUser(new Guid(Request["User_Id"]));
+    bll2.RemoveUser(new Guid(Request["User_Id"]));
 }
 <p></p>
 <form method="post">
@@ -85,32 +81,32 @@
         <input name="Award_Id"><button name="Delete_Award" value="true">Delete</button>
     </div>
 </form>
-@if (IsPost && Request.Form["Delete_Award"] == "true")
+if (IsPost && Request.Form["Delete_Award"] == "true")
 {
-    bll.RemoveAward(new Guid(Request["Award_Id"]));
+    bll2.RemoveAward(new Guid(Request["Award_Id"]));
 }
 <p></p>
 <form method="post">
     <p>Award a user</p>
     <p />
     <select name="User_To_Add">
-        @foreach (var item in bll.GetUsers())
+        @foreach (var item in bll2.GetUsers())
         {
             <option value="@item.ID">@item.Name</option>
         }
     </select>
     <select name="Award_To_Add">
-        @foreach (var item in bll.GetAwards())
+        @foreach (var item in bll2.GetAwards())
         {
             <option value="@item.ID">@item.Title</option>
         }
     </select><button name="Award_A_User" value="true">Award</button>
 </form>
-@if (IsPost && Request.Form["Award_A_User"] == "true")
+if (IsPost && Request.Form["Award_A_User"] == "true")
 {
     User user = new User();
     Award award = new Award();
-    foreach (var item in bll.GetUsers())
+    foreach (var item in bll2.GetUsers())
     {
         if (item.ID == new Guid(Request.Form["User_To_Add"]))
         {
@@ -118,7 +114,7 @@
             break;
         }
     }
-    foreach (var item in bll.GetAwards())
+    foreach (var item in bll2.GetAwards())
     {
         if (item.ID == new Guid(Request.Form["Award_To_Add"]))
         {
@@ -126,25 +122,25 @@
             break;
         }
     }
-    bll.AddUserAward(user, award);
+    bll2.AddUserAward(user, award);
 }
 <form method="post">
     <p>Strip a user of an award</p>@*Deprive*@
     <p />
     <select name="User_To_Add">
-        @foreach (var item in bll.GetUsers())
+        @foreach (var item in bll2.GetUsers())
         {
             <option value="@item.ID">@item.Name</option>
         }
     </select>
     <select name="Award_To_Add">
-        @foreach (var item in bll.GetAwards())
+        @foreach (var item in bll2.GetAwards())
         {
             <option value="@item.ID">@item.Title</option>
         }
-    </select><button name="Strip_A_User" value="true">Award</button>
+    </select><button name="Strip_A_User" value="true">Strip</button>
 </form>
-@if (IsPost && Request.Form["Strip_A_User"] == "true")
+if (IsPost && Request.Form["Strip_A_User"] == "true")
 {
     Response.Redirect("~/Pages/Delete/");
     //User user = new User();
@@ -167,27 +163,33 @@
     //}
     //bll.RemoveUserAward(id);
 }
+}
 <table>
     <tr>
         <th>User</th>
         <th>Awards</th>
     </tr>
-    @foreach (var item in bll.GetUsers())
+    @foreach (var item in bll2.GetUsers())
     {
         <tr>
             <td>@item.Name</td>
-            @foreach (var j in bll.GetUsersAwards())
-            {
-                if (item.ID == j.UserProp.ID && j.AwardProp.Title != "")
+            @*try
                 {
-                    <td>@j.AwardProp.Title</td>
+                foreach (var j in bll2.GetUsersAwards())
+                {
+                    if (item.ID == j.UserProp.ID && j.AwardProp.Title != "")
+                    {
+                        <td>@j.AwardProp.Title</td>
+                    }
+                    @*<td>@if (item.ID == j.UserProp.ID&&j.AwardProp.Title!="")
+                            {
+                                @j.AwardProp.Title
+                            }
+                        </td>*0@
                 }
-                @*<td>@if (item.ID == j.UserProp.ID&&j.AwardProp.Title!="")
-                        {
-                            @j.AwardProp.Title
-                        }
-                    </td>*@
-            }
+                }
+                    finally { }
+            *@
         </tr>
     }
 </table>

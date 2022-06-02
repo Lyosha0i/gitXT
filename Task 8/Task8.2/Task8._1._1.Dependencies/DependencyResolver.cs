@@ -35,14 +35,15 @@ namespace Task8._1._1.Dependencies
         #endregion
 
         private IAwardsDAO _awardsJsonDal;
-        private IUsersDAO _usersJsonDal;
+        //private IUsersDAO _usersJsonDal;
+        private UsersSqlDAO _usersJsonDal;
         private IUsersAwardsDAO _usersAwardsJsonDal;
         public IAwardsDAO AwardsJsonDAO
         {
             get
             {
                 if (_awardsJsonDal == null)
-                    _awardsJsonDal = new AwardsJsonDAO();
+                    _awardsJsonDal = new AwardsSqlDAO();//AwardsJsonDAO();
 
                 return _awardsJsonDal;
             }
@@ -52,24 +53,25 @@ namespace Task8._1._1.Dependencies
             get
             {
                 if (_usersAwardsJsonDal == null)
-                    _usersAwardsJsonDal = new UsersAwardsJsonDAO();
+                    _usersAwardsJsonDal = new UsersAwardsSqlDAO();//UsersAwardsJsonDAO();
 
                 return _usersAwardsJsonDal;
             }
         }
-        public IUsersDAO UsersJsonDAO
+        public UsersSqlDAO UsersJsonDAO//IUsersDAO UsersJsonDAO
         {
             get
             {
                 if (_usersJsonDal == null)
-                    _usersJsonDal = new UsersJsonDAO();
+                    _usersJsonDal = new UsersSqlDAO();//UsersJsonDAO();
 
                 return _usersJsonDal;
             }
         }
 
-        private IUsersAndAwardsBll _usersAndAwardsBll;
-        public IUsersAndAwardsBll UsersAndAwardsBll
+        //private IUsersAndAwardsBll _usersAndAwardsBll;
+        private UsersAndAwardsLogic _usersAndAwardsBll;
+        public UsersAndAwardsLogic UsersAndAwardsBll
         {
             get
             {

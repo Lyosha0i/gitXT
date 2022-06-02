@@ -9,6 +9,7 @@ namespace Task8._1._1.Entities
     public class User
     {
         public Guid ID { get; set; }
+        public int ID2 { get; set; }
 
         public DateTime DateOfBirth { get; set; }//User: Id,Name, DateOfBirth, Age
 
@@ -20,7 +21,21 @@ namespace Task8._1._1.Entities
             ID = Id;
             DateOfBirth = date;
             Name= name;
-            Age = DateTime.Now.Year-DateOfBirth.Year+(Math.Sign(DateTime.Now.DayOfYear-DateOfBirth.DayOfYear)-1)/2;
+            Age = DateTime.Now.Year-DateOfBirth.Year+(Math.Sign(DateTime.Now.DayOfYear-DateOfBirth.DayOfYear)-1)/2;//Maybe, this formula is wrong.
+        }
+        public User(int Id, DateTime date, string name)
+        {
+            ID2 = Id;
+            DateOfBirth = date;
+            Name = name;
+            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//Maybe, this formula is wrong.
+        }
+        public User(int Id, DateTime date, int age, string name)
+        {
+            ID2 = Id;
+            DateOfBirth = date;
+            Name = name;
+            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//Maybe, this formula is wrong.
         }
 
         public User(DateTime date, string name)

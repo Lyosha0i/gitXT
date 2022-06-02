@@ -9,11 +9,17 @@ namespace Task8._1._1.Entities
     public class Award
     {
         public Guid ID { get; set; }
+        public int ID2 { get; set; }
         public string Title { get; set; }
 
         public Award(Guid Id, string title)
         {
             ID = Id;
+            Title = title;
+        }
+        public Award(int Id, string title)
+        {
+            ID2 = Id;
             Title = title;
         }
         public Award(string title)

@@ -35,9 +35,11 @@
       <HintPath>..\Task8.1\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
-	<Reference Include="System.Linq" />
+    <Reference Include="System.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -45,9 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UsersAwardsJsonDAO.cs" />
-    <Compile Include="AwardsJsonDAO.cs" />
-    <Compile Include="UsersJsonDAO.cs" />
+    <Compile Include="AwardsSqlDAO.cs" />
+    <Compile Include="UsersAwardsSqlDAO.cs" />
+    <Compile Include="UsersSqlDAO.cs" />
+    <None Include="UsersAwardsJsonDAO.cshtml" />
+    <None Include="AwardsJsonDAO.cshtml" />
+    <None Include="UsersJsonDAO.cshtml" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

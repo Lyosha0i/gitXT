@@ -4,22 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Task8._1._1.BLL.Interfaces;
+using Task8._1._1.DAL;
 using Task8._1._1.DAL.Interfaces;
 using Task8._1._1.Entities;
 
 namespace Task8._1._1.BLL
 {
-    public class UsersAndAwardsLogic : IUsersAndAwardsBll
+    public class UsersAndAwardsLogic// : IUsersAndAwardsBll
     {
         private IAwardsDAO _awardsJsonDal;
         private IUsersDAO _usersJsonDal;
-        private IUsersAwardsDAO _usersAwardsJsonDal;
+        private IUsersAwardsDAO _usersAwardsJsonDal=new UsersAwardsSqlDAO();
 
-        public UsersAndAwardsLogic(IAwardsDAO awardsJsonDao, IUsersDAO usersJsonDao, IUsersAwardsDAO usersAwardsJsonDao)
+        private AwardsSqlDAO _awardsSqlDal;
+        private UsersSqlDAO _usersSqlDal;
+        private UsersAwardsSqlDAO _usersAwardsSqlDal;
+
+        public UsersAndAwardsLogic(IAwardsDAO awardsJsonDao, UsersSqlDAO usersJsonDao, IUsersAwardsDAO usersAwardsJsonDao)
         {
-            _awardsJsonDal = awardsJsonDao;
-            _usersJsonDal = usersJsonDao;
-            _usersAwardsJsonDal = usersAwardsJsonDao;
+            _awardsSqlDal = (AwardsSqlDAO)awardsJsonDao;
+            _usersSqlDal = (UsersSqlDAO)usersJsonDao;
+            _usersAwardsSqlDal = (UsersAwardsSqlDAO)usersAwardsJsonDao;
         }
         public Award AddAward(string title)=> _awardsJsonDal.AddAward(title);
 
@@ -28,14 +33,18 @@ namespace Task8._1._1.BLL
         public UserAward AddUserAward(User user, Award award) => _usersAwardsJsonDal.AddUserAward(user,award);
 
         public Award GetAward(Guid id) => _awardsJsonDal.GetAward(id);
+        public Award GetAward(int id) => _awardsSqlDal.GetAward(id);
 
-        public IEnumerable<Award> GetAwards() => _awardsJsonDal.GetAwards();
+        //public IEnumerable<Award> GetAwards() => _awardsJsonDal.GetAwards();
+        public IEnumerable<Award> GetAwards() => _awardsSqlDal.GetAwards();
 
         public User GetUser(Guid id) => _usersJsonDal.GetUser(id);
+        public User GetUser(int id) => _usersSqlDal.GetUser(id);
 
         public UserAward GetUserAward(Guid id) => _usersAwardsJsonDal.GetUserAward(id);
+        //public UserAward GetUserAward(int id) => _usersAwardsSqlDal.GetUserAward(id);
 
-        public IEnumerable<User> GetUsers() => _usersJsonDal.GetUsers();
+        public IEnumerable<User> GetUsers() => _usersSqlDal.GetUsers();
 
         public IEnumerable<UserAward> GetUsersAwards() => _usersAwardsJsonDal.GetUsersAwards();
 
