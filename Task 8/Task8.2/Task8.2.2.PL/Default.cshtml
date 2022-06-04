@@ -10,7 +10,8 @@
     UsersAndAwardsLogic bll2 = DependencyResolver.Instance.UsersAndAwardsBll;
 
     //bll.AddUser(new DateTime(2020, 3, 1), "Cool");
-
+    bll2.EditUser(4,"Meow");
+    //bll2.RemoveUser(4);
 }
 <body>
     <p>@bll2.GetUser(4).Name</p>

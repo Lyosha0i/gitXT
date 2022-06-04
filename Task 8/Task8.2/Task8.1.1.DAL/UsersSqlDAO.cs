@@ -118,7 +118,7 @@ namespace Task8._1._1.DAL
                 if (reader.Read())
                 {
                     return new User(
-                        Id: (int)reader["UserId"],
+                        Id: (int)reader["UserID"],
                         date: (DateTime)reader["DateOfBirth"],
                         name: reader["Name"] as string);
                 }
@@ -127,14 +127,69 @@ namespace Task8._1._1.DAL
             }
         }
 
-        public void RemoveUser(Guid id)
+        public void RemoveUser(int id)
         {
-            // TODO: Remove note from SQL Database
+            SqlConnection _connection = new SqlConnection(_connectionString);
+
+            using (_connection)
+            {
+                string query = "DELETE FROM Users WHERE UserID=@id";
+
+                var command = new SqlCommand(query, _connection);
+
+                command.Parameters.AddWithValue("@id", id);
+
+                //if (_connection.)
+                //static void NewOrder(Order order)
+                //{
+                //Thread myThread3 = new Thread(Pizzas);
+                //myThread3.Start();
+                //}
+                _connection.Open();
+
+                var reader = command.ExecuteReader();
+
+                //if(reader.Read())
+                //return new User(
+                //        Id: (int)reader["UserID"],
+                //        date: default,//
+                //        name: reader["Name"] as string);
+
+                //throw new InvalidOperationException();
+            }
         }
 
-        public void EditUser(int id, string newText)
+        public void EditUser(int id, string name)
         {
-            // TODO: Edit note via SQL Database   
+            SqlConnection _connection = new SqlConnection(_connectionString);
+
+            using (_connection)
+            {
+                string query = "UPDATE Users SET Name=@name WHERE UserID=@id";
+
+                var command = new SqlCommand(query, _connection);
+
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@name", name);
+
+                //if (_connection.)
+                //static void NewOrder(Order order)
+                //{
+                //Thread myThread3 = new Thread(Pizzas);
+                //myThread3.Start();
+                //}
+                _connection.Open();
+
+                var reader = command.ExecuteReader();
+
+                //if(reader.Read())
+                //return new User(
+                //        Id: (int)reader["UserID"],
+                //        date: default,//
+                //        name: reader["Name"] as string);
+
+                //throw new InvalidOperationException();
+            }
         }
 
         #region NOT_IMPLEMENTED
@@ -142,6 +197,11 @@ namespace Task8._1._1.DAL
         {
             throw new NotImplementedException();
         }
-        #endregion 
+
+        public void RemoveUser(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

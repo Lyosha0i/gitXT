@@ -20,6 +20,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Task8.2.2.PL", "Task8.2.2.PL\", "{2960226F-A912-486D-BA67-F7FADC76E6B9}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		ProjectReferences = "{6fdddf76-aa16-4d00-bade-bdf02d16faa6}|Task8.1.1.BLL.dll;{31093E3C-6AF3-4BD1-83C6-C1CBC66E03D3}|Task8.1.1.BLL.Interfaces.dll;{DB3F2FFD-2494-421A-9BC3-21331141F18C}|Task8.1.1.DAL.dll;{D56DC08E-6594-45EB-AF92-FF6C887E2355}|Task8.1.1.Entities.dll;{EA52547C-D218-4091-BBD5-1D0BE2FA19D6}|Task8.1.DAL.Interfaces.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_62987"
 		Debug.AspNetCompiler.PhysicalPath = "Task8.2.2.PL\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62987\"

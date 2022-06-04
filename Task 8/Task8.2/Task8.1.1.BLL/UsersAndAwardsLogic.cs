@@ -32,6 +32,9 @@ namespace Task8._1._1.BLL
 
         public UserAward AddUserAward(User user, Award award) => _usersAwardsJsonDal.AddUserAward(user,award);
 
+        public void RemoveUser(int id) => _usersSqlDal.RemoveUser(id);
+
+        public void EditUser(int id, string name) => _usersSqlDal.EditUser(id, name);
         public Award GetAward(Guid id) => _awardsJsonDal.GetAward(id);
         public Award GetAward(int id) => _awardsSqlDal.GetAward(id);
 

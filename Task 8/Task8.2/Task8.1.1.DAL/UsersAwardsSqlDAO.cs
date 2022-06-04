@@ -69,14 +69,42 @@ namespace Task8._1._1.DAL
             throw new NotImplementedException();
         }
 
-        public void RemoveUserAward(Guid id)
+        public void RemoveUserAward(User user, Award award)
         {
-            // TODO: Remove note from SQL Database
+            SqlConnection _connection = new SqlConnection(_connectionString);
+
+            using (_connection)
+            {
+                string query = "DELETE FROM UsersAwards WHERE UserID=@user AND AwardID=@award";
+
+                var command = new SqlCommand(query, _connection);
+
+                command.Parameters.AddWithValue("@user", user.ID2);
+                command.Parameters.AddWithValue("@award", award.ID2);
+
+                //if (_connection.)
+                //static void NewOrder(Order order)
+                //{
+                //Thread myThread3 = new Thread(Pizzas);
+                //myThread3.Start();
+                //}
+                _connection.Open();
+
+                var reader = command.ExecuteReader();
+
+                //if(reader.Read())
+                //return new User(
+                //        Id: (int)reader["UserID"],
+                //        date: default,//
+                //        name: reader["Name"] as string);
+
+                //throw new InvalidOperationException();
+            }
         }
 
-        public void EditUserAward(int id, string newText)
+        public void RemoveUserAward(Guid id)
         {
-            // TODO: Edit note via SQL Database   
+            throw new NotImplementedException();
         }
     }
 }
