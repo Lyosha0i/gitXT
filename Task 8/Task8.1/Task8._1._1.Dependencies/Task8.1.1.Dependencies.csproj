@@ -64,22 +64,6 @@
       <Project>{d56dc08e-6594-45eb-af92-ff6c887e2355}</Project>
       <Name>Task8.1.1.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Task8.1.3.BLL.Interface\Task8.1.3.BLL.Interfaces.csproj">
-      <Project>{9fc0399c-39a0-410f-bbd6-e89afc0588ff}</Project>
-      <Name>Task8.1.3.BLL.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task8.1.3.BLL\Task8.1.3.BLL.csproj">
-      <Project>{3e009c01-f8bf-4006-8458-1c0ba8ab847b}</Project>
-      <Name>Task8.1.3.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task8.1.3.DAL.Interfaces\Task8.1.3.DAL.Interfaces.csproj">
-      <Project>{0328292a-044a-4209-b233-0b4c6ec9afa8}</Project>
-      <Name>Task8.1.3.DAL.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task8.1.3.DAL\Task8.1.3.DAL.csproj">
-      <Project>{82e793f1-ccdb-4273-a0f7-8c21d8e34bfa}</Project>
-      <Name>Task8.1.3.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Task8.1.DAL.Interfaces\Task8.1.1.DAL.Interfaces.csproj">
       <Project>{ea52547c-d218-4091-bbd5-1d0be2fa19d6}</Project>
       <Name>Task8.1.1.DAL.Interfaces</Name>

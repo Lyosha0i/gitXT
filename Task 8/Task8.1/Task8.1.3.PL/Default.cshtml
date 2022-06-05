@@ -35,14 +35,19 @@
 </form>
 @if (IsPost && Request.Form["User"] == "true")
 {
-    AddModel.Instance.Day= Request["Day"];
+    AddModel.Instance.Day = Request["Day"];
     AddModel.Instance.Month = Request["Month"];
     AddModel.Instance.Year = Request["Year"];
     AddModel.Instance.Name = Request["Name"];
-    Response.Redirect("~/Pages/Add/");//
-    <p>@AddModel.Instance.user</p>
+    Response.Redirect("~/Pages/Add/");
+}
+@if (AddModel.Instance.user != null)
+    {
+<p>@AddModel.Instance.user</p>
+    AddModel.Instance.user = null;
 }
 <p></p>
+
 <form method="post" class="add">
     <div class="inline">
         <p>Add an award</p>
@@ -121,40 +126,34 @@
     <p>Strip a user of an award</p>@*Deprive*@
     <p />
     <select name="User_To_Add">
-        @foreach (var item in bll.GetUsers())
+        @foreach (var item in bll.GetUsersAwards())
         {
-            <option value="@item.ID">@item.Name</option>
+            <option value="@item.ID">@item.UserProp.Name @item.AwardProp.Title</option>
         }
-    </select>
-    <select name="Award_To_Add">
-        @foreach (var item in bll.GetAwards())
-        {
-            <option value="@item.ID">@item.Title</option>
-        }
-    </select><button name="Strip_A_User" value="true">Award</button>
+    </select><button name="Strip_A_User" value="true">Strip</button>
 </form>
 @if (IsPost && Request.Form["Strip_A_User"] == "true")
 {
     Response.Redirect("~/Pages/Delete/");
-    //User user = new User();
-    //Award award = new Award();
-    //foreach (var item in bll.GetUsers())
-    //{
-    //    if (item.ID == new Guid(Request.Form["User_To_Add"]))
-    //    {
-    //        user = item;
-    //        break;
-    //    }
-    //}
-    //foreach (var item in bll.GetAwards())
-    //{
-    //    if (item.ID == new Guid(Request.Form["Award_To_Add"]))
-    //    {
-    //        award = item;
-    //        break;
-    //    }
-    //}
-    //bll.RemoveUserAward(id);
+    User user = new User();
+    Award award = new Award();
+    foreach (var item in bll.GetUsers())
+    {
+        if (item.ID == new Guid(Request.Form["User_To_Add"]))
+        {
+            user = item;
+            break;
+        }
+    }
+    foreach (var item in bll.GetAwards())
+    {
+        if (item.ID == new Guid(Request.Form["Award_To_Add"]))
+        {
+            award = item;
+            break;
+        }
+    }
+    bll.RemoveUserAward(id);
 }
 <table>
     <tr>

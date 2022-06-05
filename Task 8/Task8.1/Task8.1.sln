@@ -12,7 +12,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Task8.1.2.PL", "Task8.1.2.PL\", "{A291D524-7A9F-4B3D-862E-074713F1E0E6}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		ProjectReferences = "{d56dc08e-6594-45eb-af92-ff6c887e2355}|Task8.1.1.Entities.dll;{31093E3C-6AF3-4BD1-83C6-C1CBC66E03D3}|Task8.1.1.BLL.Interfaces.dll;{EA52547C-D218-4091-BBD5-1D0BE2FA19D6}|Task8.1.DAL.Interfaces.dll;{4dad41af-2e4b-4ff1-bbd3-f912e845da67}|Task8._1._1.Dependencies.dll;{3E009C01-F8BF-4006-8458-1C0BA8AB847B}|Task8.1.3.BLL.dll;{9FC0399C-39A0-410F-BBD6-E89AFC0588FF}|Task8.1.3.BLL.Interface.dll;{82E793F1-CCDB-4273-A0F7-8C21D8E34BFA}|Task8.1.3.DAL.dll;{0328292A-044A-4209-B233-0B4C6EC9AFA8}|Task8.1.3.DAL.Interfaces.dll;{6FDDDF76-AA16-4D00-BADE-BDF02D16FAA6}|Task8.1.1.BLL.dll;{DB3F2FFD-2494-421A-9BC3-21331141F18C}|Task8.1.1.DAL.dll;"
+		ProjectReferences = "{d56dc08e-6594-45eb-af92-ff6c887e2355}|Task8.1.1.Entities.dll;{31093E3C-6AF3-4BD1-83C6-C1CBC66E03D3}|Task8.1.1.BLL.Interfaces.dll;{EA52547C-D218-4091-BBD5-1D0BE2FA19D6}|Task8.1.DAL.Interfaces.dll;{4dad41af-2e4b-4ff1-bbd3-f912e845da67}|Task8._1._1.Dependencies.dll;{6FDDDF76-AA16-4D00-BADE-BDF02D16FAA6}|Task8.1.1.BLL.dll;{DB3F2FFD-2494-421A-9BC3-21331141F18C}|Task8.1.1.DAL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54864"
 		Debug.AspNetCompiler.PhysicalPath = "Task8.1.2.PL\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54864\"
@@ -37,7 +37,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Task8.1.3.PL", "Task8.1.3.PL\", "{36C4E631-8F55-459D-9E7B-195B91C5D2A0}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		ProjectReferences = "{d56dc08e-6594-45eb-af92-ff6c887e2355}|Task8.1.1.Entities.dll;{3e009c01-f8bf-4006-8458-1c0ba8ab847b}|Task8.1.3.BLL.dll;{9fc0399c-39a0-410f-bbd6-e89afc0588ff}|Task8.1.3.BLL.Interface.dll;{31093E3C-6AF3-4BD1-83C6-C1CBC66E03D3}|Task8.1.1.BLL.Interfaces.dll;{EA52547C-D218-4091-BBD5-1D0BE2FA19D6}|Task8.1.DAL.Interfaces.dll;{4dad41af-2e4b-4ff1-bbd3-f912e845da67}|Task8._1._1.Dependencies.dll;{82E793F1-CCDB-4273-A0F7-8C21D8E34BFA}|Task8.1.3.DAL.dll;{0328292A-044A-4209-B233-0B4C6EC9AFA8}|Task8.1.3.DAL.Interfaces.dll;{6FDDDF76-AA16-4D00-BADE-BDF02D16FAA6}|Task8.1.1.BLL.dll;{DB3F2FFD-2494-421A-9BC3-21331141F18C}|Task8.1.1.DAL.dll;"
+		ProjectReferences = "{d56dc08e-6594-45eb-af92-ff6c887e2355}|Task8.1.1.Entities.dll;{31093E3C-6AF3-4BD1-83C6-C1CBC66E03D3}|Task8.1.1.BLL.Interfaces.dll;{EA52547C-D218-4091-BBD5-1D0BE2FA19D6}|Task8.1.DAL.Interfaces.dll;{4dad41af-2e4b-4ff1-bbd3-f912e845da67}|Task8._1._1.Dependencies.dll;{6FDDDF76-AA16-4D00-BADE-BDF02D16FAA6}|Task8.1.1.BLL.dll;{DB3F2FFD-2494-421A-9BC3-21331141F18C}|Task8.1.1.DAL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_52036"
 		Debug.AspNetCompiler.PhysicalPath = "Task8.1.3.PL\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52036\"
@@ -56,14 +56,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Task8.1.3.PL", "Task8.1.3.P
 		SlnRelativePath = "Task8.1.3.PL\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task8.1.3.BLL", "Task8.1.3.BLL\Task8.1.3.BLL.csproj", "{3E009C01-F8BF-4006-8458-1C0BA8AB847B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task8.1.3.BLL.Interfaces", "Task8.1.3.BLL.Interface\Task8.1.3.BLL.Interfaces.csproj", "{9FC0399C-39A0-410F-BBD6-E89AFC0588FF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task8.1.3.DAL", "Task8.1.3.DAL\Task8.1.3.DAL.csproj", "{82E793F1-CCDB-4273-A0F7-8C21D8E34BFA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task8.1.3.DAL.Interfaces", "Task8.1.3.DAL.Interfaces\Task8.1.3.DAL.Interfaces.csproj", "{0328292A-044A-4209-B233-0B4C6EC9AFA8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task8.1.1.PL", "Task8.1.1\Task8.1.1.PL.csproj", "{C0107755-BE9F-44A0-9A01-F7808CD746CC}"
 EndProject
@@ -101,22 +93,6 @@ Global
 		{36C4E631-8F55-459D-9E7B-195B91C5D2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36C4E631-8F55-459D-9E7B-195B91C5D2A0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{36C4E631-8F55-459D-9E7B-195B91C5D2A0}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{3E009C01-F8BF-4006-8458-1C0BA8AB847B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E009C01-F8BF-4006-8458-1C0BA8AB847B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E009C01-F8BF-4006-8458-1C0BA8AB847B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E009C01-F8BF-4006-8458-1C0BA8AB847B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FC0399C-39A0-410F-BBD6-E89AFC0588FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FC0399C-39A0-410F-BBD6-E89AFC0588FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FC0399C-39A0-410F-BBD6-E89AFC0588FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FC0399C-39A0-410F-BBD6-E89AFC0588FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82E793F1-CCDB-4273-A0F7-8C21D8E34BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82E793F1-CCDB-4273-A0F7-8C21D8E34BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82E793F1-CCDB-4273-A0F7-8C21D8E34BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82E793F1-CCDB-4273-A0F7-8C21D8E34BFA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0328292A-044A-4209-B233-0B4C6EC9AFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0328292A-044A-4209-B233-0B4C6EC9AFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0328292A-044A-4209-B233-0B4C6EC9AFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0328292A-044A-4209-B233-0B4C6EC9AFA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0107755-BE9F-44A0-9A01-F7808CD746CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C0107755-BE9F-44A0-9A01-F7808CD746CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0107755-BE9F-44A0-9A01-F7808CD746CC}.Release|Any CPU.ActiveCfg = Release|Any CPU

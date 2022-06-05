@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Day.cs" />
     <Compile Include="Models\AddModel.cs" />
+    <Compile Include="Models\DeleteModel.cs" />
     <Compile Include="UsersAndAwardsLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
