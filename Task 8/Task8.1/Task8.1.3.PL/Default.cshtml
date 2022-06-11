@@ -76,12 +76,14 @@
     <div class="inline">
         <p>Delete an award</p>
         <p />
-        <input name="Award_Id"><button name="Delete_Award" value="true">Delete</button>
+        <input name="Award_Id"><button id="delete_award" name="Delete_Award" value="true">Delete</button>
     </div>
 </form>
 @if (IsPost && Request.Form["Delete_Award"] == "true")
 {
-    bll.RemoveAward(new Guid(Request["Award_Id"]));
+    DeleteModel.guid= new Guid(Request["Award_Id"]);
+    DeleteModel.title = bll.GetAward(DeleteModel.guid).Title;
+    //bll.RemoveAward(new Guid(Request["Award_Id"]));
 }
 <p></p>
 <form method="post">
@@ -125,35 +127,18 @@
 <form method="post">
     <p>Strip a user of an award</p>@*Deprive*@
     <p />
-    <select name="User_To_Add">
+    <select name="Win_Guid">
         @foreach (var item in bll.GetUsersAwards())
         {
             <option value="@item.ID">@item.UserProp.Name @item.AwardProp.Title</option>
         }
-    </select><button name="Strip_A_User" value="true">Strip</button>
+    </select><button id="strip" name="Strip_A_User" value="true">Strip</button>
 </form>
 @if (IsPost && Request.Form["Strip_A_User"] == "true")
 {
-    Response.Redirect("~/Pages/Delete/");
-    User user = new User();
-    Award award = new Award();
-    foreach (var item in bll.GetUsers())
-    {
-        if (item.ID == new Guid(Request.Form["User_To_Add"]))
-        {
-            user = item;
-            break;
-        }
-    }
-    foreach (var item in bll.GetAwards())
-    {
-        if (item.ID == new Guid(Request.Form["Award_To_Add"]))
-        {
-            award = item;
-            break;
-        }
-    }
-    bll.RemoveUserAward(id);
+    DeleteModel.guid = new Guid(Request.Form["Win_Guid"]);
+    bll.RemoveUserAward(DeleteModel.guid);
+    //Response.Redirect("~/Pages/Delete/");
 }
 <table>
     <tr>
@@ -179,3 +164,10 @@
         </tr>
     }
 </table>
+<script>
+    document.getElementById("delete_award").onclick = function ()
+    {
+        if (confirm("Are you sure?"))
+            location = "/Pages/Delete";
+    }
+</script>
