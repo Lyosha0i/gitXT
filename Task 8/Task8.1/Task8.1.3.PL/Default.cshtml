@@ -42,8 +42,8 @@
     Response.Redirect("~/Pages/Add/");
 }
 @if (AddModel.Instance.user != null)
-    {
-<p>@AddModel.Instance.user</p>
+{
+    <p>@AddModel.Instance.user</p>
     AddModel.Instance.user = null;
 }
 <p></p>
@@ -57,7 +57,13 @@
 </form>
 @if (IsPost && Request.Form["Award"] == "true")
 {
-    bll.AddAward(Request["Title"]);
+    AddAwardModel.Instance.Title = Request["Title"];
+    Response.Redirect("~/Pages/AddAward/");
+}
+@if (AddAwardModel.Instance.award != null)
+{
+    <p>@AddAwardModel.Instance.award</p>
+    AddAwardModel.Instance.award = null;
 }
 <p></p>
 <form method="post">
@@ -81,7 +87,7 @@
 </form>
 @if (IsPost && Request.Form["Delete_Award"] == "true")
 {
-    DeleteModel.guid= new Guid(Request["Award_Id"]);
+    DeleteModel.guid = new Guid(Request["Award_Id"]);
     DeleteModel.title = bll.GetAward(DeleteModel.guid).Title;
     //bll.RemoveAward(new Guid(Request["Award_Id"]));
 }
@@ -102,7 +108,7 @@
         }
     </select><button name="Award_A_User" value="true">Award</button>
 </form>
-@if (IsPost && Request.Form["Award_A_User"] == "true")
+@if (IsPost && Request.Form["Award_A_User"] == "true"&&bll.GetUsers().ToList().Count>0 && bll.GetAwards().ToList().Count > 0)
 {
     User user = new User();
     Award award = new Award();
@@ -122,7 +128,7 @@
             break;
         }
     }
-    bll.AddUserAward(user, award);
+        bll.AddUserAward(user, award);
 }
 <form method="post">
     <p>Strip a user of an award</p>@*Deprive*@
@@ -165,8 +171,7 @@
     }
 </table>
 <script>
-    document.getElementById("delete_award").onclick = function ()
-    {
+    document.getElementById("delete_award").onclick = function () {
         if (confirm("Are you sure?"))
             location = "/Pages/Delete";
     }

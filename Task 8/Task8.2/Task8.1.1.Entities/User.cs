@@ -21,21 +21,21 @@ namespace Task8._1._1.Entities
             ID = Id;
             DateOfBirth = date;
             Name= name;
-            Age = DateTime.Now.Year-DateOfBirth.Year+(Math.Sign(DateTime.Now.DayOfYear-DateOfBirth.DayOfYear)-1)/2;//Maybe, this formula is wrong.
+            Age = DateTime.Now.Year-DateOfBirth.Year+(Math.Sign(DateTime.Now.DayOfYear-DateOfBirth.DayOfYear)-1)/2;//This formula is wrong.
         }
         public User(int Id, DateTime date, string name)
         {
             ID2 = Id;
             DateOfBirth = date;
             Name = name;
-            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//Maybe, this formula is wrong.
+            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//This formula is wrong.
         }
         public User(int Id, DateTime date, int age, string name)
         {
             ID2 = Id;
             DateOfBirth = date;
             Name = name;
-            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//Maybe, this formula is wrong.
+            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//This formula is wrong.
         }
 
         public User(DateTime date, string name)

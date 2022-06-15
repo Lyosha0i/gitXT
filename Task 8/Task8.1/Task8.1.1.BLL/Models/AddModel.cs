@@ -11,6 +11,7 @@ public class AddModel
     public string user;
     public static readonly string add = "The user is added";
     public static readonly string date = "Incorrect date";
+    public static readonly string noname = "Enter a name";
     private static AddModel _instance;
     public string Day;
     public string Month;

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Day.cs" />
+    <Compile Include="Models\AddAwardModel.cs" />
     <Compile Include="Models\AddModel.cs" />
     <Compile Include="Models\DeleteModel.cs" />
     <Compile Include="UsersAndAwardsLogic.cs" />

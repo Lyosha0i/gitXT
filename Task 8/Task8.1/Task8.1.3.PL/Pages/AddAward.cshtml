@@ -1,0 +1,19 @@
+﻿@using Task8._1._1.BLL.Interfaces;
+@using Task8._1._1.Dependencies;
+@using Task8._1._1.BLL;
+@using Task8._1._1.Entities;
+@{
+    IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
+}
+@{
+    if (AddAwardModel.Instance.Title != "")
+    {
+        bll.AddAward(AddAwardModel.Instance.Title);
+        AddAwardModel.Instance.award = AddAwardModel.add;
+    }
+    else
+    {
+        AddAwardModel.Instance.award = AddAwardModel.notitle;
+    }
+    Response.Redirect("~/");
+}

@@ -6,15 +6,22 @@
     IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
     }
 @{
-    try
+    if (AddModel.Instance.Name!="")
     {
-        bll.AddUser(new DateTime(Day.GetDay(AddModel.Instance.Year),
-            Day.GetDay(AddModel.Instance.Month), Day.GetDay(AddModel.Instance.Day)), AddModel.Instance.Name);
-        AddModel.Instance.user = AddModel.add;
+        try
+        {
+            bll.AddUser(new DateTime(Day.GetDay(AddModel.Instance.Year),
+                Day.GetDay(AddModel.Instance.Month), Day.GetDay(AddModel.Instance.Day)), AddModel.Instance.Name);
+            AddModel.Instance.user = AddModel.add;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            AddModel.Instance.user = AddModel.date;
+        }
     }
-    catch (ArgumentOutOfRangeException)
+    else
     {
-        AddModel.Instance.user = AddModel.date;
+        AddModel.Instance.user = AddModel.noname;
     }
     Response.Redirect("~/");
 }
