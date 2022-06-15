@@ -1,0 +1,187 @@
+﻿@using Task8._1._1.BLL.Interfaces;
+@using Task8._1._1.Dependencies;
+@using Task8._1._1.BLL;
+@using Task8._1._1.Entities;
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Home Page";
+
+    IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
+}
+<form method="post" class="add">
+    <div class="inline">
+        <p>Username</p>
+        <p />
+        <input name="Name">
+    </div>
+    <div class="inline">
+        <p>Date of birth</p>
+        <div class="inline">
+            <p>Day</p>
+            <p />
+            <input name="Day" type="datetime">
+        </div>
+        <div class="inline">
+            <p>Month</p>
+            <p />
+            <input name="Month" type="datetime">
+        </div>
+        <div class="inline">
+            <p>Year</p>
+            <p />
+            <input name="Year" type="datetime"><button name="User" value="true">Add</button>
+        </div>
+    </div>
+</form>
+@if (IsPost && Request.Form["User"] == "true")
+{
+    try
+    {
+        bll.AddUser(new DateTime(Day.GetDay(Request["Year"]), Day.GetDay(Request["Month"]), Day.GetDay(Request["Day"])), Request["Name"]);
+        <p>The user is added</p>
+    }
+    catch (ArgumentOutOfRangeException)
+    {
+        <p>Incorrect date</p>
+    }
+}
+<p></p>
+<form method="post" class="add">
+    <div class="inline">
+        <p>Add an award</p>
+        <p />
+        <input name="Title"><button name="Award" value="true">Add</button>
+    </div>
+</form>
+@if (IsPost && Request.Form["Award"] == "true")
+{
+    bll.AddAward(Request["Title"]);
+}
+<p></p>
+<form method="post">
+    <div class="inline">
+        <p>Delete a user</p>
+        <p />
+        <input name="User_Id"><button name="Delete_User" value="true">Delete</button>
+    </div>
+</form>
+@if (IsPost && Request.Form["Delete_User"] == "true")
+{
+    bll.RemoveUser(new Guid(Request["User_Id"]));
+}
+<p></p>
+<form method="post">
+    <div class="inline">
+        <p>Delete an award</p>
+        <p />
+        <input name="Award_Id"><button name="Delete_Award" value="true">Delete</button>
+    </div>
+</form>
+@if (IsPost && Request.Form["Delete_Award"] == "true")
+{
+    bll.RemoveAward(new Guid(Request["Award_Id"]));
+}
+<p></p>
+<form method="post">
+    <p>Award a user</p>
+    <p />
+    <select name="User_To_Add">
+        @foreach (var item in bll.GetUsers())
+        {
+            <option value="@item.ID">@item.Name</option>
+        }
+    </select>
+    <select name="Award_To_Add">
+        @foreach (var item in bll.GetAwards())
+        {
+            <option value="@item.ID">@item.Title</option>
+        }
+    </select><button name="Award_A_User" value="true">Award</button>
+</form>
+<table>
+    <tr>
+        <th>User</th>
+        <th>Awards</th>
+    </tr>
+    @foreach (var item in bll.GetUsers())
+    {
+<tr>
+    <td>@item.Name</td>
+    @foreach (var j in bll.GetUsersAwards())
+    {
+        if (item.ID == j.UserProp.ID&&j.AwardProp.Title!="")
+            {
+                <td>@j.AwardProp.Title</td>
+            }
+    @*<td>@if (item.ID == j.UserProp.ID&&j.AwardProp.Title!="")
+            {
+                @j.AwardProp.Title
+            }
+        </td>*@
+}
+</tr>
+    }
+</table>
+@if (IsPost && Request.Form["Award_A_User"] == "true")
+{
+    User user=new User();
+    Award award= new Award();
+    foreach (var item in bll.GetUsers())
+    {
+        if (item.ID == new Guid(Request.Form["User_To_Add"]))
+        {
+            user = item;
+            break;
+        }
+    }
+    foreach (var item in bll.GetAwards())
+    {
+        if (item.ID == new Guid(Request.Form["Award_To_Add"]))
+        {
+            award = item;
+            break;
+        }
+    }
+    bll.AddUserAward(user, award);
+}
+@*@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@Page.Title.</h1>
+                <h2>Modify this template to jump-start your ASP.NET Web Pages application.</h2>
+            </hgroup>
+            <p>
+                To learn more about ASP.NET Web Pages, visit
+                <a href="https://asp.net/webpages" title="ASP.NET Web Pages Website">https://asp.net/webpages</a>.
+                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET Web Pages.
+                If you have any questions about ASP.NET Web Pages, visit
+                <a href="https://forums.iis.net/1166.aspx" title="ASP.NET Web Pages Forum">our forums</a>.
+            </p>
+        </div>
+    </section>
+    }
+
+    <h3>We suggest the following:</h3>
+
+    <ol class="round">
+        <li class="one">
+            <h5>Getting Started</h5>
+            ASP.NET Web Pages and the new Razor syntax provide a fast, approachable, and lightweight way to combine server code with HTML
+            to create dynamic web content. Connect to databases, add video, link to social networking sites, and include many more features
+            that let you create beautiful sites using the latest web standards.
+            <a href="https://go.microsoft.com/fwlink/?LinkId=245139">Learn more…</a>
+        </li>
+
+        <li class="two">
+            <h5>Add NuGet packages and jump start your coding</h5>
+            NuGet makes it easy to install and update free libraries and tools.
+            <a href="https://go.microsoft.com/fwlink/?LinkId=245140">Learn more…</a>
+        </li>
+
+        <li class="three">
+            <h5>Find Web Hosting</h5>
+            You can easily find a web hosting company that offers the right mix of features and price for your applications.
+            <a href="https://go.microsoft.com/fwlink/?LinkId=245143">Learn more…</a>
+        </li>
+    </ol>*@

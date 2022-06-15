@@ -1,0 +1,16 @@
+﻿@using Task8._1._1.BLL.Interfaces;
+@using Task8._1._1.Dependencies;
+@using Task8._1._1.BLL;
+@using Task8._1._1.Entities;
+@{IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
+    bll.RemoveAward(DeleteModel.guid);
+}
+@foreach (var item in bll.GetUsersAwards())
+{
+    if (item.AwardProp.Title == DeleteModel.title)
+    {
+        bll.RemoveUserAward(item.ID);
+    }
+}
+@{Response.Redirect("~/");
+}

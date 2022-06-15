@@ -1,0 +1,28 @@
+﻿@using Task8._1._1.BLL.Interfaces;
+@using Task8._1._1.Dependencies;
+@using Task8._1._1.BLL;
+@using Task8._1._1.Entities;
+@{IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll; }
+@if (IsPost && Request.Form["Strip_A_User"] == "true")
+{
+    User user = new User();
+    Award award = new Award();
+    Guid id = new Guid();
+    foreach (var item in bll.GetUsers())
+    {
+        if (item.ID == new Guid(Request.Form["User_To_Add"]))
+        {
+            user = item;
+            break;
+        }
+    }
+    foreach (var item in bll.GetAwards())
+    {
+        if (item.ID == new Guid(Request.Form["Award_To_Add"]))
+        {
+            award = item;
+            break;
+        }
+    }
+    bll.RemoveUserAward(id);
+}

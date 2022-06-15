@@ -1,0 +1,20 @@
+﻿@using Task8._1._1.BLL.Interfaces;
+@using Task8._1._1.Dependencies;
+@using Task8._1._1.BLL;
+@using Task8._1._1.Entities;
+@{
+    IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
+    }
+@{
+    try
+    {
+        bll.AddUser(new DateTime(Day.GetDay(AddModel.Instance.Year),
+            Day.GetDay(AddModel.Instance.Month), Day.GetDay(AddModel.Instance.Day)), AddModel.Instance.Name);
+        AddModel.Instance.user = AddModel.add;
+    }
+    catch (ArgumentOutOfRangeException)
+    {
+        AddModel.Instance.user = AddModel.date;
+    }
+    Response.Redirect("~/");
+}
