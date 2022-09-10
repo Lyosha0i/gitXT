@@ -1,0 +1,42 @@
+﻿@using Task8._1._1.BLL.Interfaces;
+@using Task8._1._1.Dependencies;
+@using Task8._1._1.BLL;
+@using Task8._1._1.Entities;
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Home Page";
+
+    //IUsersAndAwardsBll bll = DependencyResolver.Instance.UsersAndAwardsBll;
+    UsersAndAwardsLogic bll2 = DependencyResolver.Instance.UsersAndAwardsBll;
+
+    //bll.AddUser(new DateTime(2020, 3, 1), "Cool");
+    bll2.EditUser(4,"Meow");
+    //bll2.RemoveUser(4);
+}
+<body>
+    <p>@bll2.GetUser(4).Name</p>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Awards</th>
+        </tr>
+        @*@@foreach (var item in bll2.GetUsers())
+        {
+            <tr>
+                <td>@item.Name</td>
+                @*foreach (var j in bll.GetUsersAwards())
+                    {
+                        if (item.ID == j.UserProp.ID&&j.AwardProp.Title!="")
+                            {
+                                <td>@j.AwardProp.Title</td>
+                            }
+                    @*<td>@if (item.ID == j.UserProp.ID&&j.AwardProp.Title!="")
+                            {
+                                @j.AwardProp.Title
+                            }
+                        </td>*
+                }
+            </tr>
+        }*@
+    </table>
+</body>

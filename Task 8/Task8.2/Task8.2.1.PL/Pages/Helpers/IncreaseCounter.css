@@ -1,0 +1,7 @@
+﻿@using WebCalculator.Models;
+@using System.Threading;
+@{
+    Thread.Sleep(TimeSpan.FromSeconds(1));
+    Counter.Increase();
+    Response.Redirect("~/");
+}
