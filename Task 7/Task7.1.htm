@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <script>
+        'use strict';
+        function Splitters(str, charIn) {
+            let t = [];
+            let splitters = [' ', '\t', '?', '!', ',', ':', ';', '.'];
+            let firstChar = 0;
+            let lastChar = 0;
+            for (lastChar; lastChar < str.length; lastChar++) {
+                for (var i = 0; i < splitters.length; i++)
+                    if (str[lastChar] == splitters[i]) {
+                        firstChar = lastChar + 1;
+                        break;
+                    }
+            }
+            t.push(str.substring(firstChar, lastChar));
+            return t;
+        }
+        function CharRemover(str) {
+            let t = Splitters(str, ' ');
+            for (var i = 0; i < t.length; i++) {
+                k = 1;
+                for (var j = 0; j < t[i].length; j++) {
+                    for (var k; k < t[i].length; k++) {
+                        if (t[i][j].toLowerCase() == t[i][k].toLowerCase()) {
+                            str = str.split(t[i][j].toLowerCase()).join('');
+                            str = str.split(t[i][j].toUpperCase()).join('');
+                            t = Splitters(str, ' ');
+                            j = 0;
+                            k = 0;
+                        }
+                    }
+                    k = j + 2;
+                }
+            }
+            return str;
+        }
+        let a = prompt("Enter a string:", "");
+        alert(CharRemover(a));
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <script>
+        'use strict';
+        function MultiplyDivide(reg) {
+            if (reg.match(/\*/) != null)
+                return reg.match(/(\d+\.\d+)|(\d+)/g)[0] * reg.match(/(\d+\.\d+)|(\d+)/g)[1] * minus;
+            else return reg.match(/(\d+\.\d+)|(\d+)/g)[0] / reg.match(/(\d+\.\d+)|(\d+)/g)[1] * minus;
+        }
+        function SumDifference(reg) {
+            if (reg.match(/\+/) != null)
+                return (parseFloat(reg.match(/(\d+\.\d+)|(\d+)/g)[0]) + parseFloat(reg.match(/(\d+\.\d+)|(\d+)/g)[1]) * minus) * minus;
+            else return ((reg.match(/(\d+\.\d+)|(\d+)/g)[0]) - (reg.match(/(\d+\.\d+)|(\d+)/g)[1]) * minus) * minus;
+        }
+        //let a="3.5+4*10-5.3/5";
+        //let a="-248*2+2-0.2/4*8-248";
+        let a = prompt("Enter an expression:", "");
+        a = a.split(' ').join('').split('=').join('');
+        let minus = 1;//1 or -1
+        let signs = "";
+        //let a="-0.2+4-4+8";
+        while (a.match(/((\d+\.\d+)|(\d+))(\*|\/)((\d+\.\d+)|(\d+))/) != null) {
+            signs = a.match(/\D+/g).join('').split('.').join('');
+            if (a[0] == '-' && signs[0] == '*' || signs[0] == '/') {
+                a = a.substring(1, a.length);
+                minus = -1;
+                //alert(signs);
+            }
+            a = a.replace(/((\d+\.\d+)|(\d+))(\*|\/)((\d+\.\d+)|(\d+))/,
+                MultiplyDivide(a.match(/((\d+\.\d+)|(\d+))(\*|\/)((\d+\.\d+)|(\d+))/)[0]));
+            minus = 1;
+        }
+        while (a.match(/((\d+\.\d+)|(\d+))(\+|\-)((\d+\.\d+)|(\d+))/) != null) {
+            if (a[0] == '-') {
+                minus = -1;
+                a = a.substring(1, a.length);
+            }
+            a = a.replace(/((\d+\.\d+)|(\d+))(\+|\-)((\d+\.\d+)|(\d+))/,
+                SumDifference(a.match(/((\d+\.\d+)|(\d+))(\+|\-)((\d+\.\d+)|(\d+))/)[0]));
+            minus = 1;
+        }
+        alert(parseFloat(a).toFixed(2));
+    </script>
+
+</body>
+</html>
