@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ namespace Task8._1._1.Entities
     public class User
     {
         public Guid ID { get; set; }
-        public int ID2 { get; set; }
 
         public DateTime DateOfBirth { get; set; }//User: Id,Name, DateOfBirth, Age
 
@@ -21,21 +21,9 @@ namespace Task8._1._1.Entities
             ID = Id;
             DateOfBirth = date;
             Name= name;
-            Age = DateTime.Now.Year-DateOfBirth.Year+(Math.Sign(DateTime.Now.DayOfYear-DateOfBirth.DayOfYear)-1)/2;//This formula is wrong.
-        }
-        public User(int Id, DateTime date, string name)
-        {
-            ID2 = Id;
-            DateOfBirth = date;
-            Name = name;
-            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//This formula is wrong.
-        }
-        public User(int Id, DateTime date, int age, string name)
-        {
-            ID2 = Id;
-            DateOfBirth = date;
-            Name = name;
-            Age = DateTime.Now.Year - DateOfBirth.Year + (Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;//This formula is wrong.
+            Age = DateTime.Today.Year - DateOfBirth.Year + (Math.Sign(DateTime.Compare(new DateTime(DateTime.Now.Year, DateOfBirth.Month, DateOfBirth.Day), DateTime.Today) * -1 + 1) - 1);
+            Console.WriteLine(Age);
+            Debug.WriteLine(Age);
         }
 
         public User(DateTime date, string name)
@@ -43,8 +31,9 @@ namespace Task8._1._1.Entities
             ID = Guid.NewGuid();
             DateOfBirth = date;
             Name = name;
-            Age = DateTime.Now.Year - DateOfBirth.Year+(Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2;
-            //Console.WriteLine(date+" "+ ((Math.Sign(DateTime.Now.DayOfYear - DateOfBirth.DayOfYear) - 1) / 2));
+            Age = DateTime.Today.Year - DateOfBirth.Year+ (Math.Sign(DateTime.Compare(new DateTime(DateTime.Now.Year,DateOfBirth.Month,DateOfBirth.Day) , DateTime.Today) * -1 + 1) - 1);
+            Console.WriteLine(Age);
+            Debug.WriteLine(Age);
         }
 
         public User()
