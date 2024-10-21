@@ -21,7 +21,7 @@ namespace Task8._1._1.Entities
             ID = Id;
             DateOfBirth = date;
             Name= name;
-            Age = DateTime.Today.Year - DateOfBirth.Year + (Math.Sign(DateTime.Compare(new DateTime(DateTime.Now.Year, DateOfBirth.Month, DateOfBirth.Day), DateTime.Today) * -1 + 1) - 1);
+            Age = DateTime.Today.Year - DateOfBirth.Year + (Math.Sign(DateTime.Compare(new DateTime(2000, DateOfBirth.Month, DateOfBirth.Day), new DateTime(2000, DateTime.Today.Month, DateTime.Today.Day)) * -1 + 1) - 1);
             Console.WriteLine(Age);
             Debug.WriteLine(Age);
         }
@@ -31,7 +31,7 @@ namespace Task8._1._1.Entities
             ID = Guid.NewGuid();
             DateOfBirth = date;
             Name = name;
-            Age = DateTime.Today.Year - DateOfBirth.Year+ (Math.Sign(DateTime.Compare(new DateTime(DateTime.Now.Year,DateOfBirth.Month,DateOfBirth.Day) , DateTime.Today) * -1 + 1) - 1);
+            Age = DateTime.Today.Year - DateOfBirth.Year + (Math.Sign(DateTime.Compare(new DateTime(2000, DateOfBirth.Month, DateOfBirth.Day), new DateTime(2000, DateTime.Today.Month, DateTime.Today.Day)) * -1 + 1) - 1);
             Console.WriteLine(Age);
             Debug.WriteLine(Age);
         }
